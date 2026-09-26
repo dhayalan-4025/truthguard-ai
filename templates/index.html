@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>TruthGuard AI — Fake News &amp; Spam Detector</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+  <div class="scene">
+    <div class="glow glow-a"></div>
+    <div class="glow glow-b"></div>
+  </div>
+
+  <header class="topbar">
+    <div class="brand">
+      <span class="brand-mark">◈</span>
+      <span class="brand-name">TruthGuard AI</span>
+    </div>
+    <p class="tagline">Paste it. Scan it. Know before you trust it.</p>
+  </header>
+
+  <main class="stage">
+
+    <section class="picker" id="picker">
+      <button class="glass-card" data-target="text-panel">
+        <span class="card-icon">✎</span>
+        <span class="card-title">Text Check</span>
+        <span class="card-desc">WhatsApp forwards, emails, news snippets — paste and scan</span>
+      </button>
+
+      <button class="glass-card" data-target="image-panel">
+        <span class="card-icon">▣</span>
+        <span class="card-title">Image Check</span>
+        <span class="card-desc">Upload a screenshot — we read the text and scan it</span>
+      </button>
+
+      <button class="glass-card" data-target="url-panel">
+        <span class="card-icon">⛓</span>
+        <span class="card-title">URL Check</span>
+        <span class="card-desc">Drop a suspicious link — we inspect its structure</span>
+      </button>
+    </section>
+
+    <!-- TEXT PANEL -->
+    <section class="panel" id="text-panel" hidden>
+      <button class="back-btn" data-back>← back</button>
+      <h2>Text Check</h2>
+      <p class="panel-hint">Paste the message you received, exactly as it came to you.</p>
+      <textarea id="text-input" rows="7" placeholder="Paste the WhatsApp message, email, or news text here..."></textarea>
+      <button class="scan-btn" id="text-scan-btn">Scan text</button>
+      <div class="result" id="text-result" hidden></div>
+    </section>
+
+    <!-- IMAGE PANEL -->
+    <section class="panel" id="image-panel" hidden>
+      <button class="back-btn" data-back>← back</button>
+      <h2>Image Check</h2>
+      <p class="panel-hint">Upload a screenshot of the message or post.</p>
+
+      <label class="drop-zone" id="drop-zone">
+        <input type="file" id="image-input" accept="image/*" hidden />
+        <span id="drop-zone-label">Click to choose an image, or drag one here</span>
+        <img id="image-preview" hidden alt="Selected screenshot preview" />
+      </label>
+
+      <button class="scan-btn" id="image-scan-btn">Extract &amp; scan</button>
+      <div class="result" id="image-result" hidden></div>
+    </section>
+
+    <!-- URL PANEL -->
+    <section class="panel" id="url-panel" hidden>
+      <button class="back-btn" data-back>← back</button>
+      <h2>URL Check</h2>
+      <p class="panel-hint">Paste the full link, including https:// if you have it.</p>
+      <input type="text" id="url-input" placeholder="https://example.com/offer" />
+      <button class="scan-btn" id="url-scan-btn">Scan URL</button>
+      <div class="result" id="url-result" hidden></div>
+    </section>
+
+  </main>
+
+  <footer class="foot">
+    Demo classifier trained on a small sample set — treat results as a second opinion, not a verdict.
+  </footer>
+
+<script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
